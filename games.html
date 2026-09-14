@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS SCIENCE - Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="site-logo" href="home.html">
+        <span>🎮</span>
+        <div>
+            <strong>KIDS SCIENCE</strong>
+            <small>SCIENCE GAMES</small>
+        </div>
+    </a>
+
+    <nav class="desktop-nav">
+        <a href="home.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="videos.html">Videos</a>
+        <a href="projects.html">Projects</a>
+        <a href="events.html">Events</a>
+        <a class="active" href="games.html">Games</a>
+    </nav>
+
+    <a class="coin-pill" href="wallet.html">
+        🪙 <span data-balance>500</span>
+    </a>
+
+    <a class="profile-mini" href="account.html">
+        <span data-avatar>🔬</span>
+    </a>
+
+</header>
+
+<main>
+
+    <section class="page-title">
+        <span>🎮 PLAY & LEARN</span>
+        <h1>Science <em>Games.</em></h1>
+        <p>
+            Test your skills and earn PlayCoins.
+        </p>
+    </section>
+
+    <section class="game-grid">
+
+        <div class="game-card">
+
+            <div class="game-icon">
+                🐦
+            </div>
+
+            <span>GAME 01</span>
+
+            <h2>Science Flappy</h2>
+
+            <p>
+                Fly through the science gates
+                and beat your high score.
+            </p>
+
+            <button
+                id="startGame"
+                class="shine-button"
+                type="button"
+            >
+                PLAY NOW
+            </button>
+
+            <div id="gameArea" class="flappy-area hidden">
+
+                <div id="gameBird">
+                    🔬
+                </div>
+
+                <div id="gamePipeTop"></div>
+                <div id="gamePipeBottom"></div>
+
+                <div id="gameScore">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="game-card">
+
+            <div class="game-icon">
+                🧠
+            </div>
+
+            <span>GAME 02</span>
+
+            <h2>Science Quiz</h2>
+
+            <p>
+                Answer science questions and
+                earn PlayCoins.
+            </p>
+
+            <button
+                id="startQuiz"
+                class="shine-button"
+                type="button"
+            >
+                START QUIZ
+            </button>
+
+            <div id="quizBox" class="quiz-box hidden">
+
+                <h3 id="quizQuestion"></h3>
+
+                <div id="quizOptions"></div>
+
+                <p id="quizResult"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

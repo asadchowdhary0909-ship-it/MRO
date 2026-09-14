@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KIDS SCIENCE - Courses</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="science-page">
+
+<!-- =========================================================
+     TOP NAVIGATION
+========================================================= -->
+
+<header class="science-header">
+
+    <div class="science-logo">
+        <div class="science-logo-icon">🔬</div>
+
+        <div>
+            <strong>KIDS SCIENCE</strong>
+            <span>Explore • Learn • Discover</span>
+        </div>
+    </div>
+
+    <nav class="science-nav">
+
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a href="courses.html" class="active">
+            📚 Courses
+        </a>
+
+        <a href="projects.html">
+            🧪 Projects
+        </a>
+
+        
+
+        <a href="events.html">
+            🚀 Events
+        </a>
+
+        <a href="videos.html">
+            ▶ Videos
+        </a>
+
+        <a href="accounts.html">
+            👤 Account
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="courses-container">
+
+
+    <!-- =====================================================
+         COURSE HOME
+    ====================================================== -->
+
+    <section id="courseHome" class="course-screen">
+
+        <div class="courses-hero">
+
+            <div class="courses-hero-text">
+
+                <span class="science-label">
+                    📖 SCIENCE LIBRARY
+                </span>
+
+                <h1>
+                    Open a Science Book
+                </h1>
+
+                <p>
+                    Choose a book, explore its chapters, read
+                    interesting science facts and test yourself
+                    with a quiz after every chapter.
+                </p>
+
+            </div>
+
+            <div class="hero-science-animation">
+                🔬
+            </div>
+
+        </div>
+
+
+        <div class="section-heading">
+
+            <div>
+                <span>LEARNING LIBRARY</span>
+                <h2>Science Books</h2>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BOOKS
+        ================================================== -->
+
+        <div class="science-books">
+
+
+            <!-- BOOK 1 -->
+
+            <article class="science-book">
+
+                <div class="book-cover nature-book">
+
+                    <div class="book-symbol">
+                        🌳
+                    </div>
+
+                    <span>BOOK 01</span>
+
+                    <h3>
+                        Nature
+                    </h3>
+
+                    <p>
+                        Discover the amazing world around us.
+                    </p>
+
+                </div>
+
+                <div class="book-info">
+
+                    <div class="book-type">
+                        BEGINNER SCIENCE
+                    </div>
+
+                    <h3>
+                        Nature
+                    </h3>
+
+                    <p>
+                        Learn about plants, animals, water,
+                        air and the world we live in.
+                    </p>
+
+                    <div class="book-meta">
+                        <span>📖 5 Chapters</span>
+                        <span>⭐ Beginner</span>
+                    </div>
+
+                    <button
+                        class="science-button"
+                        onclick="openBook('nature')">
+
+                        OPEN BOOK →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- BOOK 2 -->
+
+            <article class="science-book">
+
+                <div class="book-cover space-book">
+
+                    <div class="book-symbol">
+                        🚀
+                    </div>
+
+                    <span>BOOK 02</span>
+
+                    <h3>
+                        Space
+                    </h3>
+
+                    <p>
+                        Travel beyond Earth and explore space.
+                    </p>
+
+                </div>
+
+                <div class="book-info">
+
+                    <div class="book-type">
+                        BEGINNER SCIENCE
+                    </div>
+
+                    <h3>
+                        Space
+                    </h3>
+
+                    <p>
+                        Learn about the Sun, Moon, planets
+                        and our amazing universe.
+                    </p>
+
+                    <div class="book-meta">
+                        <span>📖 5 Chapters</span>
+                        <span>⭐ Beginner</span>
+                    </div>
+
+                    <button
+                        class="science-button"
+                        onclick="openBook('space')">
+
+                        OPEN BOOK →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- BOOK 3 -->
+
+            <article class="science-book">
+
+                <div class="book-cover human-book">
+
+                    <div class="book-symbol">
+                        🧠
+                    </div>
+
+                    <span>BOOK 03</span>
+
+                    <h3>
+                        Human Body
+                    </h3>
+
+                    <p>
+                        Discover how your body works.
+                    </p>
+
+                </div>
+
+                <div class="book-info">
+
+                    <div class="book-type">
+                        BEGINNER SCIENCE
+                    </div>
+
+                    <h3>
+                        Human Body
+                    </h3>
+
+                    <p>
+                        Explore the heart, brain, bones,
+                        muscles and senses.
+                    </p>
+
+                    <div class="book-meta">
+                        <span>📖 5 Chapters</span>
+                        <span>⭐ Beginner</span>
+                    </div>
+
+                    <button
+                        class="science-button"
+                        onclick="openBook('human')">
+
+                        OPEN BOOK →
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CHAPTER LIST
+    ====================================================== -->
+
+    <section id="chapterScreen" class="course-screen hidden">
+
+        <button
+            class="back-button"
+            onclick="showCourseHome()">
+
+            ← Back to Books
+
+        </button>
+
+
+        <div class="book-heading">
+
+            <div id="selectedBookIcon" class="large-book-icon">
+                🌳
+            </div>
+
+            <div>
+
+                <span id="selectedBookLabel">
+                    SCIENCE BOOK
+                </span>
+
+                <h1 id="selectedBookTitle">
+                    Nature
+                </h1>
+
+                <p id="selectedBookDescription">
+                    Explore the natural world.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-title">
+
+            <span>BOOK CONTENT</span>
+
+            <h2>
+                Chapters
+            </h2>
+
+        </div>
+
+
+        <div id="chapterList" class="chapter-list">
+
+            <!-- JavaScript inserts chapters here -->
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BOOK READER
+    ====================================================== -->
+
+    <section id="readerScreen" class="course-screen hidden">
+
+        <button
+            class="back-button"
+            onclick="backToChapters()">
+
+            ← Back to Chapters
+
+        </button>
+
+
+        <article class="science-reader">
+
+            <div class="reader-top">
+
+                <span id="readerBook">
+                    NATURE
+                </span>
+
+                <span id="readerChapter">
+                    CHAPTER 1
+                </span>
+
+            </div>
+
+
+            <div class="reader-title">
+
+                <span class="chapter-number">
+                    CHAPTER
+                </span>
+
+                <h1 id="readerTitle">
+                    What Is Nature?
+                </h1>
+
+                <p id="readerSubtitle">
+                    Let's discover the world around us.
+                </p>
+
+            </div>
+
+
+            <!-- IMAGE / ILLUSTRATION -->
+
+            <div
+                id="readerImage"
+                class="science-reader-image">
+
+                🌳🌎🌱
+
+            </div>
+
+
+            <!-- COMPLETE CHAPTER TEXT -->
+
+            <div
+                id="readerContent"
+                class="reader-content">
+
+                <!-- JavaScript inserts chapter -->
+
+            </div>
+
+
+            <!-- CHAPTER FACT -->
+
+            <div class="science-fact">
+
+                <div class="fact-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <strong>
+                        SCIENCE FACT
+                    </strong>
+
+                    <p id="readerFact">
+                        Nature includes everything living
+                        and non-living around us.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEXT / QUIZ -->
+
+            <div class="reader-actions">
+
+                <button
+                    id="quizButton"
+                    class="science-button"
+                    onclick="openQuiz()">
+
+                    🧠 Chapter Q&A →
+
+                </button>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUIZ
+    ====================================================== -->
+
+    <section id="quizScreen" class="course-screen hidden">
+
+        <button
+            class="back-button"
+            onclick="backToReader()">
+
+            ← Back to Chapter
+
+        </button>
+
+
+        <div class="quiz-card">
+
+            <div class="quiz-header">
+
+                <span>
+                    🧠 CHAPTER Q&A
+                </span>
+
+                <h1 id="quizTitle">
+                    Test Your Knowledge
+                </h1>
+
+                <p>
+                    Answer the questions after reading
+                    the chapter.
+                </p>
+
+            </div>
+
+
+            <div
+                id="quizQuestions"
+                class="quiz-questions">
+
+                <!-- Questions inserted by JS -->
+
+            </div>
+
+
+            <button
+                id="submitQuizButton"
+                class="science-button quiz-submit"
+                onclick="submitQuiz()">
+
+                CHECK ANSWERS ✓
+
+            </button>
+
+
+            <div
+                id="quizResult"
+                class="quiz-result hidden">
+
+            </div>
+
+
+            <button
+                id="nextChapterButton"
+                class="science-button hidden"
+                onclick="nextChapter()">
+
+                NEXT CHAPTER →
+
+            </button>
+
+
+            <button
+                id="backBookButton"
+                class="secondary-science-button hidden"
+                onclick="backToChapters()">
+
+                BACK TO CHAPTERS
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="science-footer">
+
+    <strong>🔬 KIDS SCIENCE</strong>
+
+    <p>
+        Learn science. Explore the world. Discover something new.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

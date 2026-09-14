@@ -1,0 +1,1949 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KIDS SCIENCE - Live Chat</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue-1: #03152f;
+            --blue-2: #06285a;
+            --blue-3: #0759b8;
+            --blue-4: #168cff;
+            --blue-5: #62c8ff;
+            --white: #ffffff;
+            --text: #dceeff;
+            --muted: #8eafd1;
+            --border: rgba(75, 174, 255, 0.35);
+            --danger: #ff5f6d;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 20% 10%, rgba(0, 132, 255, 0.22), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(0, 195, 255, 0.14), transparent 25%),
+                linear-gradient(135deg, #010b1d, #03152f 45%, #06285a);
+            overflow-x: hidden;
+        }
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        .science-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            min-height: 76px;
+            padding: 12px 28px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(5, 43, 91, 0.97),
+                    rgba(2, 20, 48, 0.97)
+                );
+
+            border-bottom: 1px solid rgba(80, 190, 255, 0.35);
+
+            box-shadow:
+                0 5px 30px rgba(0, 116, 255, 0.18);
+        }
+
+        .science-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: 1px;
+
+            color: white;
+
+            text-shadow:
+                0 0 8px #168cff,
+                0 0 18px rgba(22, 140, 255, 0.7);
+        }
+
+        .science-logo-icon {
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    #ffffff,
+                    #62c8ff 18%,
+                    #168cff 48%,
+                    #043274 75%
+                );
+
+            box-shadow:
+                0 0 12px #168cff,
+                0 0 28px rgba(22, 140, 255, 0.65);
+
+            font-size: 22px;
+        }
+
+        .science-nav {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .science-nav a {
+            color: #cce8ff;
+            text-decoration: none;
+
+            padding: 10px 14px;
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .science-nav a:hover {
+            color: white;
+            background: rgba(24, 140, 255, 0.18);
+
+            box-shadow:
+                inset 0 0 0 1px rgba(74, 185, 255, 0.28),
+                0 0 12px rgba(22, 140, 255, 0.15);
+        }
+
+        .science-nav a.active {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5fc4,
+                    #168cff
+                );
+
+            box-shadow:
+                0 0 14px rgba(22, 140, 255, 0.5);
+        }
+
+        /* ==============================
+           PAGE
+        ============================== */
+
+        .chat-page {
+            width: min(1200px, calc(100% - 28px));
+            margin: 30px auto 45px;
+        }
+
+        .chat-hero {
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(8, 62, 125, 0.78),
+                    rgba(2, 22, 50, 0.92)
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+
+            margin-bottom: 22px;
+        }
+
+        .chat-hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 9px;
+
+            color: white;
+
+            text-shadow:
+                0 0 12px #168cff,
+                0 0 30px rgba(22, 140, 255, 0.5);
+        }
+
+        .chat-hero p {
+            color: #a9c8e8;
+            line-height: 1.6;
+        }
+
+        .live-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 18px;
+            padding: 8px 13px;
+
+            border-radius: 999px;
+
+            background: rgba(0, 20, 45, 0.75);
+            border: 1px solid rgba(80, 190, 255, 0.3);
+
+            color: #a9dfff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #35ff91;
+
+            box-shadow:
+                0 0 7px #35ff91,
+                0 0 15px rgba(53,255,145,0.65);
+        }
+
+        .status-dot.offline {
+            background: #ff5967;
+
+            box-shadow:
+                0 0 7px #ff5967;
+        }
+
+        /* ==============================
+           CHAT APP
+        ============================== */
+
+        .chat-container {
+            display: grid;
+            grid-template-columns: 270px 1fr;
+            min-height: 650px;
+
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background:
+                rgba(1, 12, 29, 0.9);
+
+            border: 1px solid rgba(69, 174, 255, 0.32);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.38);
+        }
+
+        /* ==============================
+           SIDEBAR
+        ============================== */
+
+        .chat-sidebar {
+            padding: 22px;
+
+            border-right: 1px solid rgba(80, 174, 255, 0.22);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(5, 39, 80, 0.88),
+                    rgba(2, 17, 38, 0.92)
+                );
+        }
+
+        .profile-box {
+            text-align: center;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(90, 175, 255, 0.2);
+        }
+
+        .avatar {
+            width: 74px;
+            height: 74px;
+
+            margin: 0 auto 12px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            font-size: 38px;
+
+            background:
+                radial-gradient(
+                    circle at 30% 20%,
+                    white,
+                    #62c8ff 25%,
+                    #0871dd 60%,
+                    #03265a
+                );
+
+            border: 2px solid rgba(116, 210, 255, 0.8);
+
+            box-shadow:
+                0 0 18px rgba(22, 140, 255, 0.7);
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .profile-uid {
+            margin-top: 5px;
+            color: #7da5cd;
+            font-size: 11px;
+        }
+
+        .online-title {
+            margin: 22px 0 12px;
+
+            color: #7bcaff;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .online-info {
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background: rgba(15, 107, 210, 0.12);
+            border: 1px solid rgba(76, 174, 255, 0.18);
+        }
+
+        .online-count {
+            color: white;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .online-label {
+            margin-top: 3px;
+            color: #82a9cf;
+            font-size: 12px;
+        }
+
+        .chat-rules {
+            margin-top: 20px;
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background: rgba(0,0,0,0.18);
+
+            color: #8eafd1;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           CHAT MAIN
+        ============================== */
+
+        .chat-main {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 17px 21px;
+
+            border-bottom: 1px solid rgba(80, 174, 255, 0.2);
+
+            background: rgba(5, 36, 73, 0.45);
+        }
+
+        .chat-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .chat-subtitle {
+            margin-top: 3px;
+            color: #759bc2;
+            font-size: 11px;
+        }
+
+        .connection-text {
+            font-size: 12px;
+            color: #73ffad;
+            font-weight: 700;
+        }
+
+        .connection-text.error {
+            color: #ff6874;
+        }
+
+        .messages {
+            flex: 1;
+
+            height: 470px;
+            overflow-y: auto;
+
+            padding: 24px;
+
+            scroll-behavior: smooth;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(20, 120, 230, 0.09),
+                    transparent 45%
+                );
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.18);
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: #0759a8;
+            border-radius: 10px;
+        }
+
+        .empty-chat {
+            min-height: 300px;
+
+            display: grid;
+            place-items: center;
+
+            text-align: center;
+            color: #6488ac;
+        }
+
+        .empty-chat-icon {
+            font-size: 52px;
+            margin-bottom: 12px;
+        }
+
+        .message-row {
+            display: flex;
+            gap: 11px;
+
+            margin-bottom: 17px;
+        }
+
+        .message-row.me {
+            justify-content: flex-end;
+        }
+
+        .message-avatar {
+            flex: 0 0 auto;
+
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #168cff,
+                    #052e67
+                );
+
+            border: 1px solid rgba(98,200,255,0.55);
+
+            font-size: 20px;
+        }
+
+        .message-content {
+            max-width: min(75%, 600px);
+        }
+
+        .message-row.me .message-content {
+            order: -1;
+        }
+
+        .message-name {
+            margin-bottom: 4px;
+
+            color: #72caff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .message-row.me .message-name {
+            text-align: right;
+        }
+
+        .message-bubble {
+            padding: 11px 14px;
+
+            border-radius: 15px;
+
+            color: #e4f3ff;
+            font-size: 14px;
+            line-height: 1.5;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(10, 66, 132, 0.88),
+                    rgba(3, 29, 62, 0.95)
+                );
+
+            border: 1px solid rgba(79, 176, 255, 0.2);
+        }
+
+        .message-row.me .message-bubble {
+            background:
+                linear-gradient(
+                    145deg,
+                    #096ed8,
+                    #064489
+                );
+
+            border-color: rgba(98, 200, 255, 0.45);
+        }
+
+        .message-time {
+            margin-top: 4px;
+
+            color: #557a9e;
+            font-size: 9px;
+        }
+
+        .message-row.me .message-time {
+            text-align: right;
+        }
+
+        /* ==============================
+           INPUT
+        ============================== */
+
+        .chat-input-area {
+            padding: 15px;
+
+            border-top: 1px solid rgba(80, 174, 255, 0.2);
+
+            background:
+                rgba(2, 18, 39, 0.9);
+        }
+
+        .login-warning {
+            display: none;
+
+            padding: 12px;
+            margin-bottom: 10px;
+
+            border-radius: 10px;
+
+            color: #ffced1;
+            background: rgba(255, 70, 85, 0.1);
+            border: 1px solid rgba(255, 90, 100, 0.25);
+
+            font-size: 12px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+
+            min-width: 0;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border-radius: 13px;
+
+            outline: none;
+
+            color: white;
+            background: #061b38;
+
+            border: 1px solid rgba(78, 175, 255, 0.3);
+
+            font-size: 14px;
+        }
+
+        #messageInput::placeholder {
+            color: #5f84aa;
+        }
+
+        #messageInput:focus {
+            border-color: #168cff;
+
+            box-shadow:
+                0 0 0 3px rgba(22,140,255,0.1),
+                0 0 15px rgba(22,140,255,0.12);
+        }
+
+        #sendButton {
+            min-width: 105px;
+
+            border: 0;
+            border-radius: 13px;
+
+            color: white;
+
+            font-weight: 900;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0873df,
+                    #168cff,
+                    #0753a8
+                );
+
+            box-shadow:
+                0 0 15px rgba(22, 140, 255, 0.28);
+
+            transition: 0.2s ease;
+        }
+
+        #sendButton:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 0 25px rgba(22, 140, 255, 0.48);
+        }
+
+        #sendButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .chat-footer-note {
+            margin-top: 8px;
+            color: #4f7296;
+            font-size: 10px;
+        }
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 800px) {
+
+            .science-header {
+                padding: 12px 15px;
+                align-items: flex-start;
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            .science-nav {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 3px;
+            }
+
+            .science-nav a {
+                white-space: nowrap;
+            }
+
+            .chat-page {
+                width: min(100% - 16px, 1200px);
+                margin-top: 12px;
+            }
+
+            .chat-hero {
+                padding: 22px;
+                border-radius: 18px;
+            }
+
+            .chat-container {
+                grid-template-columns: 1fr;
+                border-radius: 18px;
+            }
+
+            .chat-sidebar {
+                display: none;
+            }
+
+            .messages {
+                height: 55vh;
+                min-height: 390px;
+            }
+
+            .message-content {
+                max-width: 82%;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .science-logo {
+                font-size: 18px;
+            }
+
+            .science-logo-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .chat-hero h1 {
+                font-size: 30px;
+            }
+
+            .chat-topbar {
+                padding: 14px;
+            }
+
+            .messages {
+                padding: 15px;
+            }
+
+            .input-row {
+                gap: 7px;
+            }
+
+            #sendButton {
+                min-width: 75px;
+            }
+
+            .message-bubble {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="science-header">
+
+    <div class="science-logo">
+        <div class="science-logo-icon">🔬</div>
+        KIDS SCIENCE
+    </div>
+
+    <nav class="science-nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="projects.html">Projects</a>
+
+        <a href="events.html">Events</a>
+
+        <a href="videos.html">Videos</a>
+
+        <a href="chat.html" class="active">Live Chat</a>
+
+        <a href="accounts.html">Account</a>
+
+    </nav>
+
+</header>
+
+
+<main class="chat-page">
+
+    <section class="chat-hero">
+
+        <h1>🌐 Live Science Chat</h1>
+
+        <p>
+            Talk with other KIDS SCIENCE users in real time.
+            Messages are shared through Firebase Realtime Database.
+        </p>
+
+        <div class="live-status">
+
+            <span id="statusDot" class="status-dot offline"></span>
+
+            <span id="statusText">
+                Connecting...
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <section class="chat-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="chat-sidebar">
+
+            <div class="profile-box">
+
+                <div id="userAvatar" class="avatar">
+                    🧑‍🔬
+                </div>
+
+                <div id="userName" class="profile-name">
+                    Guest
+                </div>
+
+                <div id="userUID" class="profile-uid">
+                    Not logged in
+                </div>
+
+            </div>
+
+
+            <div class="online-title">
+                LIVE COMMUNITY
+            </div>
+
+            <div class="online-info">
+
+                <div id="onlineCount" class="online-count">
+                    —
+                </div>
+
+                <div class="online-label">
+                    active chat users
+                </div>
+
+            </div>
+
+
+            <div class="chat-rules">
+
+                <strong>🔬 Chat Rules</strong>
+
+                <br><br>
+
+                • Be respectful.<br>
+                • Don't share private information.<br>
+                • Keep messages science-friendly.<br>
+                • Don't spam the chat.
+
+            </div>
+
+        </aside>
+
+
+        <!-- CHAT -->
+
+        <section class="chat-main">
+
+            <div class="chat-topbar">
+
+                <div>
+
+                    <div class="chat-title">
+                        🌎 Science Community
+                    </div>
+
+                    <div class="chat-subtitle">
+                        Real-time public chat
+                    </div>
+
+                </div>
+
+                <div
+                    id="connectionText"
+                    class="connection-text"
+                >
+                    Connecting...
+                </div>
+
+            </div>
+
+
+            <div id="messages" class="messages">
+
+                <div class="empty-chat">
+
+                    <div>
+
+                        <div class="empty-chat-icon">
+                            🔭
+                        </div>
+
+                        <div>
+                            Connecting to the science community...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-input-area">
+
+                <div
+                    id="loginWarning"
+                    class="login-warning"
+                >
+                    Please login to your KIDS SCIENCE account before
+                    sending messages.
+                </div>
+
+
+                <form id="chatForm">
+
+                    <div class="input-row">
+
+                        <input
+                            id="messageInput"
+                            type="text"
+                            maxlength="500"
+                            autocomplete="off"
+                            placeholder="Ask something about science..."
+                        >
+
+                        <button
+                            id="sendButton"
+                            type="submit"
+                        >
+                            SEND 🚀
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <div class="chat-footer-note">
+                    Messages are synchronized live with Firebase.
+                </div>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<!-- ==========================================================
+     FIREBASE LIVE CHAT
+     Firebase Web SDK
+========================================================== -->
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from
+    "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+
+    import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        onValue,
+        onDisconnect,
+        serverTimestamp
+    } from
+    "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+
+    /* =========================================================
+       IMPORTANT FIREBASE CONFIG
+       =========================================================
+
+       REPLACE THE VALUES BELOW WITH YOUR REAL WEB APP CONFIG.
+
+       Firebase Console:
+       Project settings
+       → Your apps
+       → Web app
+       → SDK setup and configuration
+       → Config
+    */
+
+    const firebaseConfig = {
+
+        apiKey: "PASTE_YOUR_API_KEY_HERE",
+
+        authDomain:
+            "chrono-fa677.firebaseapp.com",
+
+        databaseURL:
+            "https://chrono-fa677-default-rtdb.firebaseio.com",
+
+        projectId:
+            "chrono-fa677",
+
+        storageBucket:
+            "chrono-fa677.firebasestorage.app",
+
+        messagingSenderId:
+            "PASTE_YOUR_MESSAGING_SENDER_ID_HERE",
+
+        appId:
+            "PASTE_YOUR_APP_ID_HERE"
+
+    };
+
+
+    /* =========================================================
+       FIREBASE INITIALIZATION
+    ========================================================= */
+
+    let app;
+    let database;
+
+    let firebaseReady = false;
+
+
+    const messagesElement =
+        document.getElementById("messages");
+
+    const messageInput =
+        document.getElementById("messageInput");
+
+    const sendButton =
+        document.getElementById("sendButton");
+
+    const chatForm =
+        document.getElementById("chatForm");
+
+    const statusText =
+        document.getElementById("statusText");
+
+    const statusDot =
+        document.getElementById("statusDot");
+
+    const connectionText =
+        document.getElementById("connectionText");
+
+    const onlineCount =
+        document.getElementById("onlineCount");
+
+    const userName =
+        document.getElementById("userName");
+
+    const userUID =
+        document.getElementById("userUID");
+
+    const userAvatar =
+        document.getElementById("userAvatar");
+
+    const loginWarning =
+        document.getElementById("loginWarning");
+
+
+    /* =========================================================
+       GET KIDS SCIENCE ACCOUNT
+    ========================================================= */
+
+    const ACCOUNTS_KEY =
+        "kidsScienceAccounts";
+
+    const CURRENT_ACCOUNT_KEY =
+        "kidsScienceCurrentUID";
+
+
+    let accounts = [];
+
+    let currentAccount = null;
+
+
+    function loadCurrentAccount() {
+
+        try {
+
+            accounts =
+                JSON.parse(
+                    localStorage.getItem(ACCOUNTS_KEY)
+                ) || [];
+
+        } catch (error) {
+
+            accounts = [];
+
+        }
+
+
+        const currentUID =
+            localStorage.getItem(
+                CURRENT_ACCOUNT_KEY
+            );
+
+
+        if (!currentUID) {
+
+            currentAccount = null;
+
+            return;
+
+        }
+
+
+        currentAccount =
+            accounts.find(
+                account =>
+                    account.uid === currentUID
+            ) || null;
+
+    }
+
+
+    function updateProfileUI() {
+
+        if (!currentAccount) {
+
+            userName.textContent =
+                "Guest";
+
+            userUID.textContent =
+                "Not logged in";
+
+            userAvatar.textContent =
+                "🧑‍🔬";
+
+            loginWarning.style.display =
+                "block";
+
+            messageInput.disabled = true;
+
+            sendButton.disabled = true;
+
+            messageInput.placeholder =
+                "Login to send messages...";
+
+            return;
+
+        }
+
+
+        userName.textContent =
+            currentAccount.name || "Scientist";
+
+
+        userUID.textContent =
+            currentAccount.uid || "";
+
+
+        userAvatar.textContent =
+            currentAccount.emoji || "🧑‍🔬";
+
+
+        loginWarning.style.display =
+            "none";
+
+        messageInput.disabled =
+            false;
+
+        sendButton.disabled =
+            !firebaseReady;
+
+        messageInput.placeholder =
+            "Ask something about science...";
+
+    }
+
+
+    loadCurrentAccount();
+
+    updateProfileUI();
+
+
+    /* =========================================================
+       VALIDATE FIREBASE CONFIG
+    ========================================================= */
+
+    function firebaseConfigIsReady() {
+
+        return (
+            firebaseConfig.apiKey &&
+            firebaseConfig.apiKey !==
+                "AIzaSyDbA6RN-ICXBHMt1LGB6utshc-Xxf2e_z4" &&
+
+            firebaseConfig.messagingSenderId &&
+            firebaseConfig.messagingSenderId !==
+                "731558657346" &&
+
+            firebaseConfig.appId &&
+            firebaseConfig.appId !==
+                "1:731558657346:web:895408cec3d0488740dcdb"
+        );
+
+    }
+
+
+    /* =========================================================
+       FORMAT TIME
+    ========================================================= */
+
+    function formatTime(timestamp) {
+
+        if (!timestamp) {
+
+            return "Just now";
+
+        }
+
+
+        const date =
+            new Date(timestamp);
+
+
+        return date.toLocaleTimeString(
+            [],
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       SAFE MESSAGE ELEMENT
+    ========================================================= */
+
+    function createMessage(message) {
+
+        const row =
+            document.createElement("div");
+
+
+        const isMe =
+            currentAccount &&
+            message.uid ===
+                currentAccount.uid;
+
+
+        row.className =
+            "message-row" +
+            (isMe ? " me" : "");
+
+
+        const avatar =
+            document.createElement("div");
+
+        avatar.className =
+            "message-avatar";
+
+        avatar.textContent =
+            message.emoji || "🧑‍🔬";
+
+
+        const content =
+            document.createElement("div");
+
+        content.className =
+            "message-content";
+
+
+        const name =
+            document.createElement("div");
+
+        name.className =
+            "message-name";
+
+        name.textContent =
+            message.name || "Scientist";
+
+
+        const bubble =
+            document.createElement("div");
+
+        bubble.className =
+            "message-bubble";
+
+        /*
+           IMPORTANT:
+           textContent is intentionally used instead
+           of innerHTML so user messages cannot inject HTML.
+        */
+
+        bubble.textContent =
+            message.text || "";
+
+
+        const time =
+            document.createElement("div");
+
+        time.className =
+            "message-time";
+
+        time.textContent =
+            formatTime(message.timestamp);
+
+
+        content.appendChild(name);
+
+        content.appendChild(bubble);
+
+        content.appendChild(time);
+
+
+        row.appendChild(avatar);
+
+        row.appendChild(content);
+
+
+        return row;
+
+    }
+
+
+    /* =========================================================
+       RENDER MESSAGES
+    ========================================================= */
+
+    function renderMessages(data) {
+
+        messagesElement.innerHTML = "";
+
+
+        if (!data) {
+
+            const empty =
+                document.createElement("div");
+
+            empty.className =
+                "empty-chat";
+
+            empty.innerHTML =
+                `
+                <div>
+                    <div class="empty-chat-icon">🔭</div>
+                    <div>No messages yet.<br>Start the science conversation!</div>
+                </div>
+                `;
+
+            messagesElement.appendChild(empty);
+
+            return;
+
+        }
+
+
+        const messageList =
+            Object.entries(data)
+                .map(
+                    ([key, value]) => ({
+                        key,
+                        ...value
+                    })
+                )
+                .sort(
+                    (a, b) =>
+                        (a.timestamp || 0) -
+                        (b.timestamp || 0)
+                );
+
+
+        /*
+           Keep the chat manageable in the browser.
+           The database itself can contain more messages.
+        */
+
+        const visibleMessages =
+            messageList.slice(-200);
+
+
+        visibleMessages.forEach(
+            message => {
+
+                messagesElement.appendChild(
+                    createMessage(message)
+                );
+
+            }
+        );
+
+
+        requestAnimationFrame(() => {
+
+            messagesElement.scrollTop =
+                messagesElement.scrollHeight;
+
+        });
+
+    }
+
+
+    /* =========================================================
+       SEND MESSAGE
+    ========================================================= */
+
+    async function sendMessage() {
+
+        if (!currentAccount) {
+
+            alert(
+                "Please login to your KIDS SCIENCE account first."
+            );
+
+            return;
+
+        }
+
+
+        if (!firebaseReady || !database) {
+
+            alert(
+                "Live chat is not connected to Firebase yet."
+            );
+
+            return;
+
+        }
+
+
+        const text =
+            messageInput.value.trim();
+
+
+        if (!text) {
+
+            return;
+
+        }
+
+
+        if (text.length > 500) {
+
+            alert(
+                "Message is too long. Maximum 500 characters."
+            );
+
+            return;
+
+        }
+
+
+        sendButton.disabled = true;
+
+
+        try {
+
+            const chatRef =
+                ref(
+                    database,
+                    "kidsScienceChat/messages"
+                );
+
+
+            const newMessage =
+                push(chatRef);
+
+
+            await set(
+                newMessage,
+                {
+
+                    uid:
+                        String(
+                            currentAccount.uid || ""
+                        ),
+
+                    name:
+                        String(
+                            currentAccount.name ||
+                            "Scientist"
+                        ),
+
+                    emoji:
+                        String(
+                            currentAccount.emoji ||
+                            "🧑‍🔬"
+                        ),
+
+                    text:
+                        text,
+
+                    timestamp:
+                        serverTimestamp()
+
+                }
+            );
+
+
+            messageInput.value = "";
+
+            messageInput.focus();
+
+
+        } catch (error) {
+
+            console.error(
+                "Firebase send error:",
+                error
+            );
+
+
+            alert(
+                "Message could not be sent. Check your Firebase Database rules."
+            );
+
+        }
+
+
+        sendButton.disabled = false;
+
+    }
+
+
+    chatForm.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+    );
+
+
+    /* =========================================================
+       ENTER KEY
+    ========================================================= */
+
+    messageInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       ONLINE PRESENCE
+    ========================================================= */
+
+    async function setupPresence() {
+
+        if (!firebaseReady ||
+            !database ||
+            !currentAccount) {
+
+            return;
+
+        }
+
+
+        const uid =
+            String(
+                currentAccount.uid
+            );
+
+
+        /*
+           Firebase presence location.
+
+           A unique timestamp-based key means
+           multiple tabs/devices can be online.
+        */
+
+        const presenceRef =
+            push(
+                ref(
+                    database,
+                    "kidsScienceChat/online"
+                )
+            );
+
+
+        const presenceData = {
+
+            uid: uid,
+
+            name:
+                String(
+                    currentAccount.name ||
+                    "Scientist"
+                ),
+
+            emoji:
+                String(
+                    currentAccount.emoji ||
+                    "🧑‍🔬"
+                ),
+
+            connectedAt:
+                serverTimestamp()
+
+        };
+
+
+        await set(
+            presenceRef,
+            presenceData
+        );
+
+
+        /*
+           When this browser disconnects,
+           Firebase removes the presence entry.
+        */
+
+        onDisconnect(
+            presenceRef
+        ).remove();
+
+    }
+
+
+    /* =========================================================
+       ONLINE USER LISTENER
+    ========================================================= */
+
+    function listenForOnlineUsers() {
+
+        if (!firebaseReady ||
+            !database) {
+
+            return;
+
+        }
+
+
+        const onlineRef =
+            ref(
+                database,
+                "kidsScienceChat/online"
+            );
+
+
+        onValue(
+            onlineRef,
+            snapshot => {
+
+                const data =
+                    snapshot.val();
+
+
+                if (!data) {
+
+                    onlineCount.textContent =
+                        "0";
+
+                    return;
+
+                }
+
+
+                onlineCount.textContent =
+                    String(
+                        Object.keys(data).length
+                    );
+
+            },
+
+            error => {
+
+                console.error(
+                    "Presence listener error:",
+                    error
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       LIVE MESSAGE LISTENER
+    ========================================================= */
+
+    function listenForMessages() {
+
+        if (!firebaseReady ||
+            !database) {
+
+            return;
+
+        }
+
+
+        const chatRef =
+            ref(
+                database,
+                "kidsScienceChat/messages"
+            );
+
+
+        /*
+           onValue runs once immediately and
+           again whenever the database changes.
+        */
+
+        onValue(
+            chatRef,
+
+            snapshot => {
+
+                renderMessages(
+                    snapshot.val()
+                );
+
+            },
+
+            error => {
+
+                console.error(
+                    "Firebase read error:",
+                    error
+                );
+
+
+                connectionText.textContent =
+                    "Database error";
+
+                connectionText.classList.add(
+                    "error"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       FIREBASE START
+    ========================================================= */
+
+    async function startFirebaseChat() {
+
+        if (!firebaseConfigIsReady()) {
+
+            statusText.textContent =
+                "Firebase setup required";
+
+            statusDot.classList.add(
+                "offline"
+            );
+
+            connectionText.textContent =
+                "Config required";
+
+            connectionText.classList.add(
+                "error"
+            );
+
+            sendButton.disabled =
+                true;
+
+            messagesElement.innerHTML =
+                `
+                <div class="empty-chat">
+                    <div>
+                        <div class="empty-chat-icon">⚙️</div>
+                        <div>
+                            Firebase Web App configuration
+                            is required.<br><br>
+                            Open the code and replace the
+                            placeholder Firebase config.
+                        </div>
+                    </div>
+                </div>
+                `;
+
+            return;
+
+        }
+
+
+        try {
+
+            app =
+                initializeApp(
+                    firebaseConfig
+                );
+
+
+            database =
+                getDatabase(
+                    app
+                );
+
+
+            firebaseReady =
+                true;
+
+
+            statusText.textContent =
+                "LIVE • Firebase connected";
+
+
+            statusDot.classList.remove(
+                "offline"
+            );
+
+
+            connectionText.textContent =
+                "● LIVE";
+
+
+            connectionText.classList.remove(
+                "error"
+            );
+
+
+            updateProfileUI();
+
+
+            listenForMessages();
+
+            listenForOnlineUsers();
+
+            await setupPresence();
+
+
+        } catch (error) {
+
+            console.error(
+                "Firebase initialization error:",
+                error
+            );
+
+
+            firebaseReady =
+                false;
+
+
+            statusText.textContent =
+                "Connection failed";
+
+
+            statusDot.classList.add(
+                "offline"
+            );
+
+
+            connectionText.textContent =
+                "OFFLINE";
+
+
+            connectionText.classList.add(
+                "error"
+            );
+
+
+            sendButton.disabled =
+                true;
+
+
+            messagesElement.innerHTML =
+                `
+                <div class="empty-chat">
+                    <div>
+                        <div class="empty-chat-icon">⚠️</div>
+                        <div>
+                            Firebase could not connect.<br>
+                            Check your Firebase configuration.
+                        </div>
+                    </div>
+                </div>
+                `;
+
+        }
+
+    }
+
+
+    startFirebaseChat();
+
+
+    /* =========================================================
+       CONNECTION STATE
+    ========================================================= */
+
+    window.addEventListener(
+        "online",
+        () => {
+
+            if (firebaseReady) {
+
+                statusText.textContent =
+                    "LIVE • Online";
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "offline",
+        () => {
+
+            statusText.textContent =
+                "Internet disconnected";
+
+            statusDot.classList.add(
+                "offline"
+            );
+
+            connectionText.textContent =
+                "OFFLINE";
+
+            connectionText.classList.add(
+                "error"
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
+

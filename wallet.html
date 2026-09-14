@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS SCIENCE - Wallet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="site-logo" href="home.html">
+        <span>🪙</span>
+        <div>
+            <strong>KIDS SCIENCE</strong>
+            <small>PLAYCOINS WALLET</small>
+        </div>
+    </a>
+
+    <nav class="desktop-nav">
+        <a href="home.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="videos.html">Videos</a>
+        <a href="projects.html">Projects</a>
+        <a href="events.html">Events</a>
+        <a href="games.html">Games</a>
+    </nav>
+
+    <a class="coin-pill active-coin" href="wallet.html">
+        🪙 <span data-balance>500</span>
+    </a>
+
+    <a class="profile-mini" href="account.html">
+        <span data-avatar>🔬</span>
+    </a>
+
+</header>
+
+<main>
+
+    <section class="wallet-page">
+
+        <div class="wallet-balance">
+
+            <span>YOUR PLAYCOINS</span>
+
+            <strong>
+                🪙 <span data-big-balance>500</span>
+            </strong>
+
+            <button
+                id="dailyBonus"
+                class="shine-button"
+                type="button"
+            >
+                CLAIM DAILY BONUS
+            </button>
+
+        </div>
+
+        <div class="transaction-panel">
+
+            <div class="section-heading">
+                <div>
+                    <span>ACCOUNT ACTIVITY</span>
+                    <h2>Transactions</h2>
+                </div>
+            </div>
+
+            <div id="transactions"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

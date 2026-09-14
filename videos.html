@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS SCIENCE - Videos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="site-logo" href="home.html">
+        <span>🎥</span>
+        <div>
+            <strong>KIDS SCIENCE</strong>
+            <small>SCIENCE VIDEOS</small>
+        </div>
+    </a>
+
+    <nav class="desktop-nav">
+        <a href="home.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a class="active" href="videos.html">Videos</a>
+        <a href="projects.html">Projects</a>
+        <a href="events.html">Events</a>
+        <a href="games.html">Games</a>
+    </nav>
+
+    <a class="coin-pill" href="wallet.html">
+        🪙 <span data-balance>500</span>
+    </a>
+
+    <a class="profile-mini" href="account.html">
+        <span data-avatar>🔬</span>
+        <span data-name>Scientist</span>
+    </a>
+
+</header>
+
+<main>
+
+    <section class="page-title">
+        <span>🎥 WATCH & LEARN</span>
+        <h1>Science <em>Videos.</em></h1>
+        <p>
+            Buy a video with PlayCoins and unlock it permanently.
+        </p>
+    </section>
+
+    <section class="video-grid">
+
+        <article class="paid-video">
+
+            <div class="video-thumb">
+                <span>🌎</span>
+                <small>SCIENCE</small>
+            </div>
+
+            <div class="video-content">
+                <span>VIDEO 01</span>
+                <h2>Amazing Science</h2>
+                <p>
+                    Explore amazing science facts
+                    and discoveries.
+                </p>
+
+                <div class="video-price">
+                    🪙 150 PlayCoins
+                </div>
+
+                <button
+                    class="buy-video"
+                    data-video-id="Gf4qxkGbp7M"
+                    data-price="150"
+                    type="button"
+                >
+                    BUY VIDEO
+                </button>
+
+            </div>
+
+        </article>
+
+        <article class="paid-video">
+
+            <div class="video-thumb">
+                <span>🚀</span>
+                <small>SPACE</small>
+            </div>
+
+            <div class="video-content">
+                <span>VIDEO 02</span>
+                <h2>Explore Science</h2>
+                <p>
+                    Discover interesting science
+                    ideas in a fun way.
+                </p>
+
+                <div class="video-price">
+                    🪙 200 PlayCoins
+                </div>
+
+                <button
+                    class="buy-video"
+                    data-video-id="GtFHVL9-V5Y"
+                    data-price="200"
+                    type="button"
+                >
+                    BUY VIDEO
+                </button>
+
+            </div>
+
+        </article>
+
+        <article class="paid-video">
+
+            <div class="video-thumb">
+                <span>🧪</span>
+                <small>EXPERIMENTS</small>
+            </div>
+
+            <div class="video-content">
+                <span>VIDEO 03</span>
+                <h2>Science Fun</h2>
+                <p>
+                    Learn science through exciting
+                    visual explanations.
+                </p>
+
+                <div class="video-price">
+                    🪙 250 PlayCoins
+                </div>
+
+                <button
+                    class="buy-video"
+                    data-video-id="ImvQ0n__sHg"
+                    data-price="250"
+                    type="button"
+                >
+                    BUY VIDEO
+                </button>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<div id="videoModal" class="video-modal hidden">
+
+    <div class="video-modal-box">
+
+        <button
+            id="closeVideo"
+            class="video-close"
+            type="button"
+        >
+            ×
+        </button>
+
+        <div id="videoContainer"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
