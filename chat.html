@@ -1,91 +1,91 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>KIDS SCIENCE - Live Chat</title>
 
+
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        :root {
-            --blue-1: #03152f;
-            --blue-2: #06285a;
-            --blue-3: #0759b8;
-            --blue-4: #168cff;
-            --blue-5: #62c8ff;
-            --white: #ffffff;
-            --text: #dceeff;
-            --muted: #8eafd1;
-            --border: rgba(75, 174, 255, 0.35);
-            --danger: #ff5f6d;
-        }
-
         body {
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--text);
+
+            font-family: Arial, sans-serif;
+
+            color: #e8f6ff;
+
             background:
-                radial-gradient(circle at 20% 10%, rgba(0, 132, 255, 0.22), transparent 30%),
-                radial-gradient(circle at 85% 20%, rgba(0, 195, 255, 0.14), transparent 25%),
-                linear-gradient(135deg, #010b1d, #03152f 45%, #06285a);
-            overflow-x: hidden;
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(0,130,255,.25),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(0,210,255,.13),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #010817,
+                    #031b3d 50%,
+                    #062d62
+                );
         }
 
-        /* ==============================
-           HEADER
-        ============================== */
+        .header {
+            min-height: 76px;
 
-        .science-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 13px 28px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            min-height: 76px;
-            padding: 12px 28px;
+            gap: 20px;
 
             background:
-                linear-gradient(
-                    180deg,
-                    rgba(5, 43, 91, 0.97),
-                    rgba(2, 20, 48, 0.97)
-                );
+                rgba(2,19,43,.96);
 
-            border-bottom: 1px solid rgba(80, 190, 255, 0.35);
+            border-bottom:
+                1px solid rgba(70,180,255,.3);
 
             box-shadow:
-                0 5px 30px rgba(0, 116, 255, 0.18);
+                0 5px 30px rgba(0,100,255,.18);
         }
 
-        .science-logo {
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
 
-            font-size: 23px;
-            font-weight: 900;
-            letter-spacing: 1px;
-
             color: white;
 
+            font-size: 23px;
+            font-weight: 900;
+
             text-shadow:
-                0 0 8px #168cff,
-                0 0 18px rgba(22, 140, 255, 0.7);
+                0 0 10px #168cff;
         }
 
-        .science-logo-icon {
-            width: 43px;
-            height: 43px;
+        .logo-icon {
+            width: 45px;
+            height: 45px;
 
             display: grid;
             place-items: center;
@@ -94,203 +94,181 @@
 
             background:
                 radial-gradient(
-                    circle at 30% 25%,
-                    #ffffff,
-                    #62c8ff 18%,
-                    #168cff 48%,
-                    #043274 75%
+                    circle,
+                    white 5%,
+                    #62c8ff 25%,
+                    #168cff 55%,
+                    #04306b
                 );
 
             box-shadow:
-                0 0 12px #168cff,
-                0 0 28px rgba(22, 140, 255, 0.65);
-
-            font-size: 22px;
+                0 0 18px #168cff;
         }
 
-        .science-nav {
+        .nav {
             display: flex;
-            align-items: center;
-            gap: 7px;
+            gap: 5px;
             flex-wrap: wrap;
             justify-content: flex-end;
         }
 
-        .science-nav a {
-            color: #cce8ff;
+        .nav a {
+            color: #cdeaff;
             text-decoration: none;
 
-            padding: 10px 14px;
+            padding: 10px 13px;
+
             border-radius: 10px;
 
             font-size: 14px;
             font-weight: 700;
-
-            transition: 0.2s ease;
         }
 
-        .science-nav a:hover {
-            color: white;
-            background: rgba(24, 140, 255, 0.18);
-
-            box-shadow:
-                inset 0 0 0 1px rgba(74, 185, 255, 0.28),
-                0 0 12px rgba(22, 140, 255, 0.15);
-        }
-
-        .science-nav a.active {
+        .nav a:hover,
+        .nav a.active {
             color: white;
 
             background:
                 linear-gradient(
                     135deg,
-                    #0b5fc4,
+                    #0759b8,
                     #168cff
                 );
-
-            box-shadow:
-                0 0 14px rgba(22, 140, 255, 0.5);
         }
 
-        /* ==============================
-           PAGE
-        ============================== */
-
-        .chat-page {
+        .page {
             width: min(1200px, calc(100% - 28px));
-            margin: 30px auto 45px;
+
+            margin: 35px auto 45px;
         }
 
-        .chat-hero {
-            padding: 30px;
+        .hero {
+            padding: 28px;
 
-            border-radius: 24px;
+            border-radius: 23px;
 
             background:
                 linear-gradient(
                     135deg,
-                    rgba(8, 62, 125, 0.78),
-                    rgba(2, 22, 50, 0.92)
+                    rgba(6,62,125,.78),
+                    rgba(2,20,46,.95)
                 );
 
-            border: 1px solid var(--border);
+            border:
+                1px solid rgba(70,180,255,.3);
 
-            box-shadow:
-                0 15px 50px rgba(0, 0, 0, 0.35),
-                inset 0 1px 0 rgba(255,255,255,0.08);
-
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
-        .chat-hero h1 {
-            font-size: clamp(30px, 5vw, 48px);
-            margin-bottom: 9px;
-
+        .hero h1 {
             color: white;
 
+            font-size:
+                clamp(30px,5vw,48px);
+
             text-shadow:
-                0 0 12px #168cff,
-                0 0 30px rgba(22, 140, 255, 0.5);
+                0 0 13px #168cff;
         }
 
-        .chat-hero p {
-            color: #a9c8e8;
+        .hero p {
+            color: #9fc0df;
+
+            margin-top: 8px;
+
             line-height: 1.6;
         }
 
-        .live-status {
+        .status {
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
 
-            margin-top: 18px;
+            margin-top: 15px;
+
             padding: 8px 13px;
 
             border-radius: 999px;
 
-            background: rgba(0, 20, 45, 0.75);
-            border: 1px solid rgba(80, 190, 255, 0.3);
+            background:
+                rgba(0,20,45,.7);
 
-            color: #a9dfff;
-            font-size: 13px;
-            font-weight: 700;
+            border:
+                1px solid rgba(70,180,255,.25);
+
+            color: #9edfff;
+
+            font-size: 12px;
+            font-weight: 800;
         }
 
-        .status-dot {
+        .dot {
             width: 9px;
             height: 9px;
+
             border-radius: 50%;
-            background: #35ff91;
+
+            background: #3dff91;
 
             box-shadow:
-                0 0 7px #35ff91,
-                0 0 15px rgba(53,255,145,0.65);
+                0 0 10px #3dff91;
         }
 
-        .status-dot.offline {
-            background: #ff5967;
-
+        .dot.offline {
+            background: #ff5868;
             box-shadow:
-                0 0 7px #ff5967;
+                0 0 10px #ff5868;
         }
 
-        /* ==============================
-           CHAT APP
-        ============================== */
-
-        .chat-container {
+        .chat {
             display: grid;
-            grid-template-columns: 270px 1fr;
+
+            grid-template-columns:
+                250px 1fr;
+
             min-height: 650px;
 
             overflow: hidden;
 
-            border-radius: 24px;
+            border-radius: 23px;
 
             background:
-                rgba(1, 12, 29, 0.9);
+                rgba(1,12,29,.93);
 
-            border: 1px solid rgba(69, 174, 255, 0.32);
+            border:
+                1px solid rgba(70,180,255,.28);
 
             box-shadow:
-                0 20px 60px rgba(0,0,0,0.38);
+                0 20px 60px rgba(0,0,0,.4);
         }
 
-        /* ==============================
-           SIDEBAR
-        ============================== */
-
-        .chat-sidebar {
+        .sidebar {
             padding: 22px;
-
-            border-right: 1px solid rgba(80, 174, 255, 0.22);
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(5, 39, 80, 0.88),
-                    rgba(2, 17, 38, 0.92)
+                    rgba(5,40,82,.9),
+                    rgba(2,16,36,.95)
                 );
-        }
 
-        .profile-box {
-            text-align: center;
-            padding-bottom: 22px;
-            border-bottom: 1px solid rgba(90, 175, 255, 0.2);
+            border-right:
+                1px solid rgba(70,180,255,.2);
         }
 
         .avatar {
-            width: 74px;
-            height: 74px;
+            width: 78px;
+            height: 78px;
 
-            margin: 0 auto 12px;
+            margin: auto;
 
             display: grid;
             place-items: center;
 
             border-radius: 50%;
 
-            font-size: 38px;
+            font-size: 40px;
 
             background:
                 radial-gradient(
@@ -301,109 +279,138 @@
                     #03265a
                 );
 
-            border: 2px solid rgba(116, 210, 255, 0.8);
+            border:
+                2px solid rgba(116,210,255,.8);
 
             box-shadow:
-                0 0 18px rgba(22, 140, 255, 0.7);
+                0 0 22px rgba(22,140,255,.6);
         }
 
-        .profile-name {
+        .profile {
+            text-align: center;
+
+            padding-bottom: 20px;
+
+            border-bottom:
+                1px solid rgba(70,180,255,.2);
+        }
+
+        .name {
+            margin-top: 11px;
+
             color: white;
+
             font-size: 18px;
-            font-weight: 800;
+            font-weight: 900;
         }
 
-        .profile-uid {
+        .uid {
             margin-top: 5px;
-            color: #7da5cd;
-            font-size: 11px;
+
+            color: #7095ba;
+
+            font-size: 10px;
         }
 
         .online-title {
-            margin: 22px 0 12px;
+            margin-top: 22px;
 
-            color: #7bcaff;
-            font-size: 12px;
+            color: #75caff;
+
+            font-size: 11px;
             font-weight: 900;
-            text-transform: uppercase;
+
             letter-spacing: 1px;
         }
 
-        .online-info {
-            padding: 13px;
+        .online-count {
+            margin-top: 9px;
+
+            padding: 15px;
 
             border-radius: 12px;
 
-            background: rgba(15, 107, 210, 0.12);
-            border: 1px solid rgba(76, 174, 255, 0.18);
+            background:
+                rgba(20,120,230,.1);
+
+            border:
+                1px solid rgba(70,180,255,.18);
         }
 
-        .online-count {
+        .count {
             color: white;
-            font-size: 25px;
+
+            font-size: 28px;
             font-weight: 900;
         }
 
-        .online-label {
-            margin-top: 3px;
-            color: #82a9cf;
-            font-size: 12px;
+        .count-text {
+            color: #7298bc;
+            font-size: 11px;
         }
 
-        .chat-rules {
+        .rules {
             margin-top: 20px;
+
             padding: 13px;
 
             border-radius: 12px;
 
-            background: rgba(0,0,0,0.18);
+            color: #799abd;
 
-            color: #8eafd1;
-            font-size: 12px;
+            background:
+                rgba(0,0,0,.15);
+
+            font-size: 11px;
+
             line-height: 1.6;
         }
 
-        /* ==============================
-           CHAT MAIN
-        ============================== */
-
-        .chat-main {
-            min-width: 0;
+        .main {
             display: flex;
             flex-direction: column;
+
+            min-width: 0;
         }
 
-        .chat-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
+        .chat-head {
             padding: 17px 21px;
 
-            border-bottom: 1px solid rgba(80, 174, 255, 0.2);
+            background:
+                rgba(5,36,73,.5);
 
-            background: rgba(5, 36, 73, 0.45);
+            border-bottom:
+                1px solid rgba(70,180,255,.2);
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .chat-title {
+        .chat-head-title {
             color: white;
+
             font-size: 18px;
             font-weight: 900;
         }
 
-        .chat-subtitle {
+        .chat-head-sub {
             margin-top: 3px;
-            color: #759bc2;
+
+            color: #6e94b9;
+
+            font-size: 10px;
+        }
+
+        .connection {
+            color: #62ffad;
+
             font-size: 11px;
+            font-weight: 900;
         }
 
-        .connection-text {
-            font-size: 12px;
-            color: #73ffad;
-            font-weight: 700;
-        }
-
-        .connection-text.error {
+        .connection.error {
             color: #ff6874;
         }
 
@@ -411,26 +418,14 @@
             flex: 1;
 
             height: 470px;
+
             overflow-y: auto;
 
-            padding: 24px;
-
-            scroll-behavior: smooth;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(20, 120, 230, 0.09),
-                    transparent 45%
-                );
+            padding: 23px;
         }
 
         .messages::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .messages::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.18);
+            width: 7px;
         }
 
         .messages::-webkit-scrollbar-thumb {
@@ -438,37 +433,40 @@
             border-radius: 10px;
         }
 
-        .empty-chat {
+        .empty {
             min-height: 300px;
 
             display: grid;
             place-items: center;
 
             text-align: center;
-            color: #6488ac;
+
+            color: #6285a9;
         }
 
-        .empty-chat-icon {
+        .empty-icon {
             font-size: 52px;
-            margin-bottom: 12px;
+
+            margin-bottom: 10px;
         }
 
-        .message-row {
+        .message {
             display: flex;
-            gap: 11px;
+
+            gap: 10px;
 
             margin-bottom: 17px;
         }
 
-        .message-row.me {
+        .message.me {
             justify-content: flex-end;
         }
 
         .message-avatar {
-            flex: 0 0 auto;
-
             width: 38px;
             height: 38px;
+
+            flex: 0 0 auto;
 
             display: grid;
             place-items: center;
@@ -482,16 +480,17 @@
                     #052e67
                 );
 
-            border: 1px solid rgba(98,200,255,0.55);
+            border:
+                1px solid rgba(98,200,255,.5);
 
-            font-size: 20px;
+            font-size: 19px;
         }
 
-        .message-content {
-            max-width: min(75%, 600px);
+        .message-box {
+            max-width: min(75%,600px);
         }
 
-        .message-row.me .message-content {
+        .message.me .message-box {
             order: -1;
         }
 
@@ -499,34 +498,40 @@
             margin-bottom: 4px;
 
             color: #72caff;
-            font-size: 11px;
-            font-weight: 800;
+
+            font-size: 10px;
+            font-weight: 900;
         }
 
-        .message-row.me .message-name {
+        .message.me .message-name {
             text-align: right;
         }
 
-        .message-bubble {
+        .bubble {
             padding: 11px 14px;
 
             border-radius: 15px;
 
-            color: #e4f3ff;
-            font-size: 14px;
-            line-height: 1.5;
-
             background:
                 linear-gradient(
                     145deg,
-                    rgba(10, 66, 132, 0.88),
-                    rgba(3, 29, 62, 0.95)
+                    rgba(10,66,132,.88),
+                    rgba(3,29,62,.95)
                 );
 
-            border: 1px solid rgba(79, 176, 255, 0.2);
+            border:
+                1px solid rgba(79,176,255,.2);
+
+            color: #e4f3ff;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            word-break: break-word;
         }
 
-        .message-row.me .message-bubble {
+        .message.me .bubble {
             background:
                 linear-gradient(
                     145deg,
@@ -534,51 +539,55 @@
                     #064489
                 );
 
-            border-color: rgba(98, 200, 255, 0.45);
+            border-color:
+                rgba(98,200,255,.45);
         }
 
-        .message-time {
+        .time {
             margin-top: 4px;
 
             color: #557a9e;
+
             font-size: 9px;
         }
 
-        .message-row.me .message-time {
+        .message.me .time {
             text-align: right;
         }
 
-        /* ==============================
-           INPUT
-        ============================== */
-
-        .chat-input-area {
+        .input-area {
             padding: 15px;
 
-            border-top: 1px solid rgba(80, 174, 255, 0.2);
-
             background:
-                rgba(2, 18, 39, 0.9);
+                rgba(2,18,39,.95);
+
+            border-top:
+                1px solid rgba(70,180,255,.2);
         }
 
-        .login-warning {
+        .warning {
             display: none;
 
-            padding: 12px;
             margin-bottom: 10px;
+
+            padding: 11px;
 
             border-radius: 10px;
 
-            color: #ffced1;
-            background: rgba(255, 70, 85, 0.1);
-            border: 1px solid rgba(255, 90, 100, 0.25);
+            color: #ffd1d4;
 
-            font-size: 12px;
+            background:
+                rgba(255,70,80,.1);
+
+            border:
+                1px solid rgba(255,70,80,.25);
+
+            font-size: 11px;
         }
 
         .input-row {
             display: flex;
-            gap: 10px;
+            gap: 9px;
         }
 
         #messageInput {
@@ -588,44 +597,37 @@
 
             height: 50px;
 
-            padding: 0 15px;
+            padding: 0 14px;
+
+            color: white;
+
+            background: #061b38;
+
+            border:
+                1px solid rgba(78,175,255,.3);
 
             border-radius: 13px;
 
             outline: none;
 
-            color: white;
-            background: #061b38;
-
-            border: 1px solid rgba(78, 175, 255, 0.3);
-
             font-size: 14px;
-        }
-
-        #messageInput::placeholder {
-            color: #5f84aa;
         }
 
         #messageInput:focus {
             border-color: #168cff;
 
             box-shadow:
-                0 0 0 3px rgba(22,140,255,0.1),
-                0 0 15px rgba(22,140,255,0.12);
+                0 0 0 3px rgba(22,140,255,.1);
         }
 
         #sendButton {
             min-width: 105px;
 
             border: 0;
+
             border-radius: 13px;
 
             color: white;
-
-            font-weight: 900;
-            font-size: 14px;
-
-            cursor: pointer;
 
             background:
                 linear-gradient(
@@ -635,72 +637,53 @@
                     #0753a8
                 );
 
-            box-shadow:
-                0 0 15px rgba(22, 140, 255, 0.28);
+            font-weight: 900;
 
-            transition: 0.2s ease;
-        }
-
-        #sendButton:hover {
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 0 25px rgba(22, 140, 255, 0.48);
+            cursor: pointer;
         }
 
         #sendButton:disabled {
-            opacity: 0.5;
+            opacity: .5;
             cursor: not-allowed;
-            transform: none;
         }
 
-        .chat-footer-note {
-            margin-top: 8px;
+        .note {
+            margin-top: 7px;
+
             color: #4f7296;
-            font-size: 10px;
+
+            font-size: 9px;
         }
 
-        /* ==============================
-           MOBILE
-        ============================== */
+        @media(max-width:800px) {
 
-        @media (max-width: 800px) {
-
-            .science-header {
-                padding: 12px 15px;
-                align-items: flex-start;
-                gap: 12px;
+            .header {
                 flex-direction: column;
+                align-items: flex-start;
+                padding: 13px 16px;
             }
 
-            .science-nav {
+            .nav {
                 width: 100%;
-                justify-content: flex-start;
                 overflow-x: auto;
                 flex-wrap: nowrap;
-                padding-bottom: 3px;
             }
 
-            .science-nav a {
+            .nav a {
                 white-space: nowrap;
             }
 
-            .chat-page {
-                width: min(100% - 16px, 1200px);
+            .page {
+                width: calc(100% - 16px);
                 margin-top: 12px;
             }
 
-            .chat-hero {
-                padding: 22px;
-                border-radius: 18px;
-            }
-
-            .chat-container {
+            .chat {
                 grid-template-columns: 1fr;
                 border-radius: 18px;
             }
 
-            .chat-sidebar {
+            .sidebar {
                 display: none;
             }
 
@@ -709,96 +692,114 @@
                 min-height: 390px;
             }
 
-            .message-content {
+            .message-box {
                 max-width: 82%;
             }
         }
 
-        @media (max-width: 500px) {
+        @media(max-width:450px) {
 
-            .science-logo {
-                font-size: 18px;
+            .hero {
+                padding: 22px;
             }
 
-            .science-logo-icon {
-                width: 38px;
-                height: 38px;
-            }
-
-            .chat-hero h1 {
-                font-size: 30px;
-            }
-
-            .chat-topbar {
+            .chat-head {
                 padding: 14px;
             }
 
             .messages {
-                padding: 15px;
-            }
-
-            .input-row {
-                gap: 7px;
+                padding: 14px;
             }
 
             #sendButton {
                 min-width: 75px;
             }
 
-            .message-bubble {
-                font-size: 13px;
-            }
         }
+
     </style>
+
 </head>
 
-<body>
 
-<header class="science-header">
+<body data-page="chat">
 
-    <div class="science-logo">
-        <div class="science-logo-icon">🔬</div>
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🔬
+        </div>
+
         KIDS SCIENCE
+
     </div>
 
-    <nav class="science-nav">
 
-        <a href="index.html">Home</a>
+    <nav class="nav">
 
-        <a href="courses.html">Courses</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="projects.html">Projects</a>
+        <a href="courses.html">
+            Courses
+        </a>
 
-        <a href="events.html">Events</a>
+        <a href="projects.html">
+            Projects
+        </a>
 
-        <a href="videos.html">Videos</a>
+        <a href="events.html">
+            Events
+        </a>
 
-        <a href="chat.html" class="active">Live Chat</a>
+        <a href="videos.html">
+            Videos
+        </a>
 
-        <a href="accounts.html">Account</a>
+        <a
+            href="chat.html"
+            class="active"
+        >
+            Live Chat
+        </a>
+
+        <a href="accounts.html">
+            Account
+        </a>
 
     </nav>
 
 </header>
 
 
-<main class="chat-page">
+<main class="page">
 
-    <section class="chat-hero">
 
-        <h1>🌐 Live Science Chat</h1>
+    <section class="hero">
+
+        <h1>
+            🌐 Live Science Chat
+        </h1>
 
         <p>
             Talk with other KIDS SCIENCE users in real time.
-            Messages are shared through Firebase Realtime Database.
+            Your saved science account is automatically used.
         </p>
 
-        <div class="live-status">
 
-            <span id="statusDot" class="status-dot offline"></span>
+        <div class="status">
+
+            <span
+                id="statusDot"
+                class="dot offline"
+            ></span>
 
             <span id="statusText">
-                Connecting...
+                Connecting to Firebase...
             </span>
 
         </div>
@@ -806,23 +807,31 @@
     </section>
 
 
-    <section class="chat-container">
+    <section class="chat">
 
-        <!-- SIDEBAR -->
 
-        <aside class="chat-sidebar">
+        <aside class="sidebar">
 
-            <div class="profile-box">
+            <div class="profile">
 
-                <div id="userAvatar" class="avatar">
+                <div
+                    id="userAvatar"
+                    class="avatar"
+                >
                     🧑‍🔬
                 </div>
 
-                <div id="userName" class="profile-name">
+                <div
+                    id="userName"
+                    class="name"
+                >
                     Guest
                 </div>
 
-                <div id="userUID" class="profile-uid">
+                <div
+                    id="userUID"
+                    class="uid"
+                >
                     Not logged in
                 </div>
 
@@ -830,79 +839,85 @@
 
 
             <div class="online-title">
-                LIVE COMMUNITY
+                ONLINE NOW
             </div>
 
-            <div class="online-info">
 
-                <div id="onlineCount" class="online-count">
+            <div class="online-count">
+
+                <div
+                    id="onlineCount"
+                    class="count"
+                >
                     —
                 </div>
 
-                <div class="online-label">
-                    active chat users
+                <div class="count-text">
+                    active users
                 </div>
 
             </div>
 
 
-            <div class="chat-rules">
+            <div class="rules">
 
-                <strong>🔬 Chat Rules</strong>
+                <strong>🔬 Science Chat Rules</strong>
 
                 <br><br>
 
-                • Be respectful.<br>
-                • Don't share private information.<br>
-                • Keep messages science-friendly.<br>
-                • Don't spam the chat.
+                Be respectful.<br>
+                Don't share private information.<br>
+                Don't spam.<br>
+                Keep the community science-friendly.
 
             </div>
 
         </aside>
 
 
-        <!-- CHAT -->
+        <section class="main">
 
-        <section class="chat-main">
 
-            <div class="chat-topbar">
+            <div class="chat-head">
 
                 <div>
 
-                    <div class="chat-title">
+                    <div class="chat-head-title">
                         🌎 Science Community
                     </div>
 
-                    <div class="chat-subtitle">
-                        Real-time public chat
+                    <div class="chat-head-sub">
+                        Firebase Realtime Database
                     </div>
 
                 </div>
+
 
                 <div
                     id="connectionText"
-                    class="connection-text"
+                    class="connection"
                 >
-                    Connecting...
+                    CONNECTING
                 </div>
 
             </div>
 
 
-            <div id="messages" class="messages">
+            <div
+                id="messages"
+                class="messages"
+            >
 
-                <div class="empty-chat">
+                <div class="empty">
 
                     <div>
 
-                        <div class="empty-chat-icon">
+                        <div class="empty-icon">
                             🔭
                         </div>
 
-                        <div>
-                            Connecting to the science community...
-                        </div>
+                        Connecting to the
+                        science community...
 
                     </div>
 
@@ -911,14 +926,14 @@
             </div>
 
 
-            <div class="chat-input-area">
+            <div class="input-area">
 
                 <div
-                    id="loginWarning"
-                    class="login-warning"
+                    id="warning"
+                    class="warning"
                 >
-                    Please login to your KIDS SCIENCE account before
-                    sending messages.
+                    Please create/login to your KIDS SCIENCE
+                    account before sending messages.
                 </div>
 
 
@@ -934,9 +949,11 @@
                             placeholder="Ask something about science..."
                         >
 
+
                         <button
                             id="sendButton"
                             type="submit"
+                            disabled
                         >
                             SEND 🚀
                         </button>
@@ -946,8 +963,8 @@
                 </form>
 
 
-                <div class="chat-footer-note">
-                    Messages are synchronized live with Firebase.
+                <div class="note">
+                    Maximum 500 characters per message.
                 </div>
 
             </div>
@@ -959,16 +976,16 @@
 </main>
 
 
-<!-- ==========================================================
-     FIREBASE LIVE CHAT
-     Firebase Web SDK
-========================================================== -->
+<!-- ======================================================
+     FIREBASE
+====================================================== -->
 
 <script type="module">
 
     import {
         initializeApp
-    } from
+    }
+    from
     "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
@@ -980,27 +997,29 @@
         onValue,
         onDisconnect,
         serverTimestamp
-    } from
+    }
+    from
     "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
 
-    /* =========================================================
-       IMPORTANT FIREBASE CONFIG
-       =========================================================
+    /* =====================================================
+       FIREBASE CONFIG
+    =====================================================
 
-       REPLACE THE VALUES BELOW WITH YOUR REAL WEB APP CONFIG.
+       REPLACE THE PLACEHOLDERS WITH YOUR WEB APP CONFIG.
 
-       Firebase Console:
-       Project settings
-       → Your apps
-       → Web app
+       Firebase Console
+       → Project Settings
+       → Your Apps
+       → Web App
        → SDK setup and configuration
-       → Config
-    */
+
+    ===================================================== */
 
     const firebaseConfig = {
 
-        apiKey: "PASTE_YOUR_API_KEY_HERE",
+        apiKey:
+            "PASTE_YOUR_API_KEY_HERE",
 
         authDomain:
             "chrono-fa677.firebaseapp.com",
@@ -1023,56 +1042,74 @@
     };
 
 
-    /* =========================================================
-       FIREBASE INITIALIZATION
-    ========================================================= */
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-    let app;
-    let database;
-
-    let firebaseReady = false;
-
-
-    const messagesElement =
-        document.getElementById("messages");
+    const messages =
+        document.getElementById(
+            "messages"
+        );
 
     const messageInput =
-        document.getElementById("messageInput");
+        document.getElementById(
+            "messageInput"
+        );
 
     const sendButton =
-        document.getElementById("sendButton");
+        document.getElementById(
+            "sendButton"
+        );
 
     const chatForm =
-        document.getElementById("chatForm");
-
-    const statusText =
-        document.getElementById("statusText");
-
-    const statusDot =
-        document.getElementById("statusDot");
-
-    const connectionText =
-        document.getElementById("connectionText");
-
-    const onlineCount =
-        document.getElementById("onlineCount");
+        document.getElementById(
+            "chatForm"
+        );
 
     const userName =
-        document.getElementById("userName");
+        document.getElementById(
+            "userName"
+        );
 
     const userUID =
-        document.getElementById("userUID");
+        document.getElementById(
+            "userUID"
+        );
 
     const userAvatar =
-        document.getElementById("userAvatar");
+        document.getElementById(
+            "userAvatar"
+        );
 
-    const loginWarning =
-        document.getElementById("loginWarning");
+    const warning =
+        document.getElementById(
+            "warning"
+        );
+
+    const statusText =
+        document.getElementById(
+            "statusText"
+        );
+
+    const statusDot =
+        document.getElementById(
+            "statusDot"
+        );
+
+    const connectionText =
+        document.getElementById(
+            "connectionText"
+        );
+
+    const onlineCount =
+        document.getElementById(
+            "onlineCount"
+        );
 
 
-    /* =========================================================
-       GET KIDS SCIENCE ACCOUNT
-    ========================================================= */
+    /* =====================================================
+       ACCOUNT STORAGE
+    ===================================================== */
 
     const ACCOUNTS_KEY =
         "kidsScienceAccounts";
@@ -1081,52 +1118,62 @@
         "kidsScienceCurrentUID";
 
 
-    let accounts = [];
-
     let currentAccount = null;
 
 
-    function loadCurrentAccount() {
+    function getAccount() {
+
+        let accounts = [];
+
 
         try {
 
             accounts =
                 JSON.parse(
-                    localStorage.getItem(ACCOUNTS_KEY)
+                    localStorage.getItem(
+                        ACCOUNTS_KEY
+                    )
                 ) || [];
 
-        } catch (error) {
+        } catch {
 
             accounts = [];
 
         }
 
 
-        const currentUID =
+        const uid =
             localStorage.getItem(
                 CURRENT_ACCOUNT_KEY
             );
 
 
-        if (!currentUID) {
+        if (!uid) {
 
-            currentAccount = null;
-
-            return;
+            return null;
 
         }
 
 
-        currentAccount =
+        return (
             accounts.find(
                 account =>
-                    account.uid === currentUID
-            ) || null;
+                    account.uid === uid
+            ) || null
+        );
 
     }
 
 
-    function updateProfileUI() {
+    currentAccount =
+        getAccount();
+
+
+    /* =====================================================
+       PROFILE UI
+    ===================================================== */
+
+    function updateProfile() {
 
         if (!currentAccount) {
 
@@ -1139,15 +1186,21 @@
             userAvatar.textContent =
                 "🧑‍🔬";
 
-            loginWarning.style.display =
+
+            warning.style.display =
                 "block";
 
-            messageInput.disabled = true;
 
-            sendButton.disabled = true;
+            messageInput.disabled =
+                true;
+
+            sendButton.disabled =
+                true;
+
 
             messageInput.placeholder =
                 "Login to send messages...";
+
 
             return;
 
@@ -1155,25 +1208,27 @@
 
 
         userName.textContent =
-            currentAccount.name || "Scientist";
+            currentAccount.name ||
+            "Scientist";
 
 
         userUID.textContent =
-            currentAccount.uid || "";
+            currentAccount.uid ||
+            "";
 
 
         userAvatar.textContent =
-            currentAccount.emoji || "🧑‍🔬";
+            currentAccount.emoji ||
+            "🧑‍🔬";
 
 
-        loginWarning.style.display =
+        warning.style.display =
             "none";
+
 
         messageInput.disabled =
             false;
 
-        sendButton.disabled =
-            !firebaseReady;
 
         messageInput.placeholder =
             "Ask something about science...";
@@ -1181,37 +1236,41 @@
     }
 
 
-    loadCurrentAccount();
-
-    updateProfileUI();
+    updateProfile();
 
 
-    /* =========================================================
-       VALIDATE FIREBASE CONFIG
-    ========================================================= */
+    /* =====================================================
+       CONFIG CHECK
+    ===================================================== */
 
-    function firebaseConfigIsReady() {
+    function validConfig() {
 
         return (
+
             firebaseConfig.apiKey &&
             firebaseConfig.apiKey !==
-                "AIzaSyDbA6RN-ICXBHMt1LGB6utshc-Xxf2e_z4" &&
+                "PASTE_YOUR_API_KEY_HERE"
+
+            &&
 
             firebaseConfig.messagingSenderId &&
             firebaseConfig.messagingSenderId !==
-                "731558657346" &&
+                "PASTE_YOUR_MESSAGING_SENDER_ID_HERE"
+
+            &&
 
             firebaseConfig.appId &&
             firebaseConfig.appId !==
-                "1:731558657346:web:895408cec3d0488740dcdb"
+                "PASTE_YOUR_APP_ID_HERE"
+
         );
 
     }
 
 
-    /* =========================================================
+    /* =====================================================
        FORMAT TIME
-    ========================================================= */
+    ===================================================== */
 
     function formatTime(timestamp) {
 
@@ -1222,11 +1281,9 @@
         }
 
 
-        const date =
-            new Date(timestamp);
-
-
-        return date.toLocaleTimeString(
+        return new Date(
+            timestamp
+        ).toLocaleTimeString(
             [],
             {
                 hour: "2-digit",
@@ -1237,90 +1294,117 @@
     }
 
 
-    /* =========================================================
-       SAFE MESSAGE ELEMENT
-    ========================================================= */
+    /* =====================================================
+       CREATE MESSAGE
+    ===================================================== */
 
-    function createMessage(message) {
+    function createMessage(data) {
 
         const row =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         const isMe =
             currentAccount &&
-            message.uid ===
+            data.uid ===
                 currentAccount.uid;
 
 
         row.className =
-            "message-row" +
+            "message" +
             (isMe ? " me" : "");
 
 
         const avatar =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         avatar.className =
             "message-avatar";
 
+
         avatar.textContent =
-            message.emoji || "🧑‍🔬";
+            data.emoji ||
+            "🧑‍🔬";
 
 
-        const content =
-            document.createElement("div");
+        const box =
+            document.createElement(
+                "div"
+            );
 
-        content.className =
-            "message-content";
+
+        box.className =
+            "message-box";
 
 
         const name =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         name.className =
             "message-name";
 
+
         name.textContent =
-            message.name || "Scientist";
+            data.name ||
+            "Scientist";
 
 
         const bubble =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         bubble.className =
-            "message-bubble";
+            "bubble";
+
 
         /*
-           IMPORTANT:
-           textContent is intentionally used instead
-           of innerHTML so user messages cannot inject HTML.
+           NEVER use innerHTML for the message.
+
+           textContent prevents a user from injecting
+           HTML/JavaScript into the chat.
         */
 
         bubble.textContent =
-            message.text || "";
+            data.text ||
+            "";
 
 
         const time =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         time.className =
-            "message-time";
+            "time";
+
 
         time.textContent =
-            formatTime(message.timestamp);
+            formatTime(
+                data.timestamp
+            );
 
 
-        content.appendChild(name);
+        box.appendChild(name);
 
-        content.appendChild(bubble);
+        box.appendChild(bubble);
 
-        content.appendChild(time);
+        box.appendChild(time);
 
 
         row.appendChild(avatar);
 
-        row.appendChild(content);
+        row.appendChild(box);
 
 
         return row;
@@ -1328,93 +1412,89 @@
     }
 
 
-    /* =========================================================
+    /* =====================================================
        RENDER MESSAGES
-    ========================================================= */
+    ===================================================== */
 
     function renderMessages(data) {
 
-        messagesElement.innerHTML = "";
+        messages.innerHTML = "";
 
 
         if (!data) {
 
-            const empty =
-                document.createElement("div");
+            messages.innerHTML = `
+                <div class="empty">
 
-            empty.className =
-                "empty-chat";
+                    <div>
 
-            empty.innerHTML =
-                `
-                <div>
-                    <div class="empty-chat-icon">🔭</div>
-                    <div>No messages yet.<br>Start the science conversation!</div>
+                        <div class="empty-icon">
+                            🔭
+                        </div>
+
+                        No messages yet.<br>
+                        Start the science conversation!
+
+                    </div>
+
                 </div>
-                `;
-
-            messagesElement.appendChild(empty);
+            `;
 
             return;
 
         }
 
 
-        const messageList =
-            Object.entries(data)
-                .map(
-                    ([key, value]) => ({
-                        key,
-                        ...value
-                    })
-                )
+        const list =
+            Object.values(data)
                 .sort(
-                    (a, b) =>
+                    (a,b) =>
                         (a.timestamp || 0) -
                         (b.timestamp || 0)
                 );
 
 
         /*
-           Keep the chat manageable in the browser.
-           The database itself can contain more messages.
+           Display latest 200 messages in browser.
         */
 
-        const visibleMessages =
-            messageList.slice(-200);
+        list
+            .slice(-200)
+            .forEach(
+                message => {
+
+                    messages.appendChild(
+                        createMessage(
+                            message
+                        )
+                    );
+
+                }
+            );
 
 
-        visibleMessages.forEach(
-            message => {
+        requestAnimationFrame(
+            () => {
 
-                messagesElement.appendChild(
-                    createMessage(message)
-                );
+                messages.scrollTop =
+                    messages.scrollHeight;
 
             }
         );
 
-
-        requestAnimationFrame(() => {
-
-            messagesElement.scrollTop =
-                messagesElement.scrollHeight;
-
-        });
-
     }
 
 
-    /* =========================================================
+    /* =====================================================
        SEND MESSAGE
-    ========================================================= */
+    ===================================================== */
 
     async function sendMessage() {
 
         if (!currentAccount) {
 
             alert(
-                "Please login to your KIDS SCIENCE account first."
+                "Please login first."
             );
 
             return;
@@ -1422,10 +1502,10 @@
         }
 
 
-        if (!firebaseReady || !database) {
+        if (!database) {
 
             alert(
-                "Live chat is not connected to Firebase yet."
+                "Firebase is not connected."
             );
 
             return;
@@ -1444,23 +1524,13 @@
         }
 
 
-        if (text.length > 500) {
-
-            alert(
-                "Message is too long. Maximum 500 characters."
-            );
-
-            return;
-
-        }
-
-
-        sendButton.disabled = true;
+        sendButton.disabled =
+            true;
 
 
         try {
 
-            const chatRef =
+            const messagesRef =
                 ref(
                     database,
                     "kidsScienceChat/messages"
@@ -1468,7 +1538,7 @@
 
 
             const newMessage =
-                push(chatRef);
+                push(messagesRef);
 
 
             await set(
@@ -1477,7 +1547,7 @@
 
                     uid:
                         String(
-                            currentAccount.uid || ""
+                            currentAccount.uid
                         ),
 
                     name:
@@ -1510,19 +1580,20 @@
         } catch (error) {
 
             console.error(
-                "Firebase send error:",
+                "Send message error:",
                 error
             );
 
 
             alert(
-                "Message could not be sent. Check your Firebase Database rules."
+                "Could not send message. Check your Firebase Database rules."
             );
 
         }
 
 
-        sendButton.disabled = false;
+        sendButton.disabled =
+            false;
 
     }
 
@@ -1539,262 +1610,44 @@
     );
 
 
-    /* =========================================================
-       ENTER KEY
-    ========================================================= */
-
-    messageInput.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "Enter" &&
-                !event.shiftKey
-            ) {
-
-                event.preventDefault();
-
-                sendMessage();
-
-            }
-
-        }
-    );
-
-
-    /* =========================================================
-       ONLINE PRESENCE
-    ========================================================= */
-
-    async function setupPresence() {
-
-        if (!firebaseReady ||
-            !database ||
-            !currentAccount) {
-
-            return;
-
-        }
-
-
-        const uid =
-            String(
-                currentAccount.uid
-            );
-
-
-        /*
-           Firebase presence location.
-
-           A unique timestamp-based key means
-           multiple tabs/devices can be online.
-        */
-
-        const presenceRef =
-            push(
-                ref(
-                    database,
-                    "kidsScienceChat/online"
-                )
-            );
-
-
-        const presenceData = {
-
-            uid: uid,
-
-            name:
-                String(
-                    currentAccount.name ||
-                    "Scientist"
-                ),
-
-            emoji:
-                String(
-                    currentAccount.emoji ||
-                    "🧑‍🔬"
-                ),
-
-            connectedAt:
-                serverTimestamp()
-
-        };
-
-
-        await set(
-            presenceRef,
-            presenceData
-        );
-
-
-        /*
-           When this browser disconnects,
-           Firebase removes the presence entry.
-        */
-
-        onDisconnect(
-            presenceRef
-        ).remove();
-
-    }
-
-
-    /* =========================================================
-       ONLINE USER LISTENER
-    ========================================================= */
-
-    function listenForOnlineUsers() {
-
-        if (!firebaseReady ||
-            !database) {
-
-            return;
-
-        }
-
-
-        const onlineRef =
-            ref(
-                database,
-                "kidsScienceChat/online"
-            );
-
-
-        onValue(
-            onlineRef,
-            snapshot => {
-
-                const data =
-                    snapshot.val();
-
-
-                if (!data) {
-
-                    onlineCount.textContent =
-                        "0";
-
-                    return;
-
-                }
-
-
-                onlineCount.textContent =
-                    String(
-                        Object.keys(data).length
-                    );
-
-            },
-
-            error => {
-
-                console.error(
-                    "Presence listener error:",
-                    error
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
-       LIVE MESSAGE LISTENER
-    ========================================================= */
-
-    function listenForMessages() {
-
-        if (!firebaseReady ||
-            !database) {
-
-            return;
-
-        }
-
-
-        const chatRef =
-            ref(
-                database,
-                "kidsScienceChat/messages"
-            );
-
-
-        /*
-           onValue runs once immediately and
-           again whenever the database changes.
-        */
-
-        onValue(
-            chatRef,
-
-            snapshot => {
-
-                renderMessages(
-                    snapshot.val()
-                );
-
-            },
-
-            error => {
-
-                console.error(
-                    "Firebase read error:",
-                    error
-                );
-
-
-                connectionText.textContent =
-                    "Database error";
-
-                connectionText.classList.add(
-                    "error"
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
+    /* =====================================================
        FIREBASE START
-    ========================================================= */
+    ===================================================== */
 
-    async function startFirebaseChat() {
+    let database = null;
 
-        if (!firebaseConfigIsReady()) {
+
+    async function startFirebase() {
+
+        if (!validConfig()) {
 
             statusText.textContent =
-                "Firebase setup required";
-
-            statusDot.classList.add(
-                "offline"
-            );
+                "Firebase configuration required";
 
             connectionText.textContent =
-                "Config required";
+                "CONFIG REQUIRED";
 
             connectionText.classList.add(
                 "error"
             );
 
-            sendButton.disabled =
-                true;
 
-            messagesElement.innerHTML =
-                `
-                <div class="empty-chat">
+            messages.innerHTML = `
+                <div class="empty">
+
                     <div>
-                        <div class="empty-chat-icon">⚙️</div>
-                        <div>
-                            Firebase Web App configuration
-                            is required.<br><br>
-                            Open the code and replace the
-                            placeholder Firebase config.
+
+                        <div class="empty-icon">
+                            ⚙️
                         </div>
+
+                        Add your Firebase Web App
+                        configuration to chat.html.
+
                     </div>
+
                 </div>
-                `;
+            `;
 
             return;
 
@@ -1803,20 +1656,14 @@
 
         try {
 
-            app =
+            const app =
                 initializeApp(
                     firebaseConfig
                 );
 
 
             database =
-                getDatabase(
-                    app
-                );
-
-
-            firebaseReady =
-                true;
+                getDatabase(app);
 
 
             statusText.textContent =
@@ -1837,30 +1684,31 @@
             );
 
 
-            updateProfileUI();
+            if (currentAccount) {
+
+                sendButton.disabled =
+                    false;
+
+            }
 
 
-            listenForMessages();
+            listenMessages();
 
-            listenForOnlineUsers();
+            listenOnlineUsers();
 
-            await setupPresence();
+            setupPresence();
 
 
         } catch (error) {
 
             console.error(
-                "Firebase initialization error:",
+                "Firebase startup error:",
                 error
             );
 
 
-            firebaseReady =
-                false;
-
-
             statusText.textContent =
-                "Connection failed";
+                "Firebase connection failed";
 
 
             statusDot.classList.add(
@@ -1875,75 +1723,158 @@
             connectionText.classList.add(
                 "error"
             );
-
-
-            sendButton.disabled =
-                true;
-
-
-            messagesElement.innerHTML =
-                `
-                <div class="empty-chat">
-                    <div>
-                        <div class="empty-chat-icon">⚠️</div>
-                        <div>
-                            Firebase could not connect.<br>
-                            Check your Firebase configuration.
-                        </div>
-                    </div>
-                </div>
-                `;
 
         }
 
     }
 
 
-    startFirebaseChat();
+    /* =====================================================
+       LIVE MESSAGE LISTENER
+    ===================================================== */
+
+    function listenMessages() {
+
+        const chatRef =
+            ref(
+                database,
+                "kidsScienceChat/messages"
+            );
 
 
-    /* =========================================================
-       CONNECTION STATE
-    ========================================================= */
+        /*
+           This is the important part:
 
-    window.addEventListener(
-        "online",
-        () => {
+           onValue automatically runs when another
+           user/device writes a new message.
+        */
 
-            if (firebaseReady) {
+        onValue(
+            chatRef,
+            snapshot => {
 
-                statusText.textContent =
-                    "LIVE • Online";
+                renderMessages(
+                    snapshot.val()
+                );
+
+            },
+            error => {
+
+                console.error(
+                    "Read error:",
+                    error
+                );
 
             }
+        );
+
+    }
+
+
+    /* =====================================================
+       ONLINE PRESENCE
+    ===================================================== */
+
+    async function setupPresence() {
+
+        if (!currentAccount) {
+
+            return;
 
         }
-    );
 
 
-    window.addEventListener(
-        "offline",
-        () => {
-
-            statusText.textContent =
-                "Internet disconnected";
-
-            statusDot.classList.add(
-                "offline"
+        const presenceRef =
+            push(
+                ref(
+                    database,
+                    "kidsScienceChat/online"
+                )
             );
 
-            connectionText.textContent =
-                "OFFLINE";
 
-            connectionText.classList.add(
-                "error"
+        await set(
+            presenceRef,
+            {
+
+                uid:
+                    String(
+                        currentAccount.uid
+                    ),
+
+                name:
+                    String(
+                        currentAccount.name ||
+                        "Scientist"
+                    ),
+
+                emoji:
+                    String(
+                        currentAccount.emoji ||
+                        "🧑‍🔬"
+                    ),
+
+                connectedAt:
+                    serverTimestamp()
+
+            }
+        );
+
+
+        /*
+           Automatically remove this user when
+           their browser/device disconnects.
+        */
+
+        onDisconnect(
+            presenceRef
+        ).remove();
+
+    }
+
+
+    /* =====================================================
+       ONLINE USER LISTENER
+    ===================================================== */
+
+    function listenOnlineUsers() {
+
+        const onlineRef =
+            ref(
+                database,
+                "kidsScienceChat/online"
             );
 
-        }
-    );
+
+        onValue(
+            onlineRef,
+            snapshot => {
+
+                const data =
+                    snapshot.val();
+
+
+                onlineCount.textContent =
+                    data
+                        ? Object.keys(data).length
+                        : "0";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    startFirebase();
 
 </script>
 
+
 </body>
+
 </html>
 
